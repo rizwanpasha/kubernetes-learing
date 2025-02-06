@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gin-server-nodeport-service
+spec:
+  selector:
+    app: gin-server-pod
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 12345
+      nodePort: 32000

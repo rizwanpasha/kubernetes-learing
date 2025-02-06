@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: gin-server-replicaset
+  labels:
+    app: gin-server-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gin-server-pod
+  template:
+    metadata:
+      labels:
+        app: gin-server-pod
+    spec:
+      containers:
+        - name: gin-server-container
+          image: rizwanpasha/gin-server:latest
+          ports:
+            - containerPort: 12345

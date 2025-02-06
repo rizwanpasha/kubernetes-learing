@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gin-server-deployment
+  labels:
+    app: gin-server-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gin-server-pod
+  template:
+    metadata:
+      name: gin-server-pod
+      labels:
+        app: gin-server-pod
+    spec:
+      containers:
+        - name: gin-server-container
+          image: rizwanpasha/gin-server:latest
+          ports:
+            - containerPort: 12345

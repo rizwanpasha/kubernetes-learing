@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gin-server-pod
+  labels:
+    app: gin-server-pod
+spec:
+  containers:
+  - name: gin-server-container
+    image: rizwanpasha/gin-server:latest
+    ports:
+    - containerPort: 12345
