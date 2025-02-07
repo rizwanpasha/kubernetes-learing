@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job
+  labels:
+    app: job
+spec:
+  parallelism: 3 # Maximum number of pods running in parallel
+  completions: 3 # Desired number of successful completions
+  template:
+    spec:
+      containers:
+        - name: job-container
+          image: rizwanpasha/job:v1
+      restartPolicy: OnFailure
