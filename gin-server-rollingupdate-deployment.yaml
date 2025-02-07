@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gin-server-rollingupdate-deployment
+  labels:
+    app: gin-server-rollingupdate-deployment
+spec:
+  replicas: 3
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1 # how many older instance can go down
+      maxSurge: 1 # how many new instance can e created at a time
+  revisionHistoryLimit: 2 # Specifies the number of old ReplicaSets to retain to allow rollbacks
+  selector:
+    matchLabels:
+      app: gin-server-pod
+  template:
+    metadata:
+      name: gin-server-pod
+      labels:
+        app: gin-server-pod
+    spec:
+      containers:
+        - name: gin-server-container
+          image: rizwanpasha/gin-server:v2
+          ports:
+            - containerPort: 12345
