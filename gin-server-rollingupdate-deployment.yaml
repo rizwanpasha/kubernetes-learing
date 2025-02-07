@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gin-server-rollingupdate-deployment
+  name: gin-server-deployment
   labels:
-    app: gin-server-rollingupdate-deployment
+    app: gin-server-deployment
 spec:
   replicas: 3
   strategy: 

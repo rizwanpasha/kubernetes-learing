@@ -6,6 +6,12 @@ metadata:
     app: gin-server-deployment
 spec:
   replicas: 3
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1 # how many older instance can go down
+      maxSurge: 1 # how many new instance can e created at a time
+  revisionHistoryLimit: 2 # Specifies the number of old ReplicaSets to retain to allow rollbacks
   selector:
     matchLabels:
       app: gin-server-pod
