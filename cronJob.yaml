@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob
+  labels:
+    app: cronjob
+spec:
+ schedule: "* * * * *"
+ jobTemplate:
+  spec:
+    ttlSecondsAfterFinished: 10
+    template:
+      spec:
+        containers:
+          - name: cronjob-container
+            image: rizwanpasha/job:v1
+        restartPolicy: OnFailure
