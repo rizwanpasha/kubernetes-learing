@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: gin-server-container
-          image: rizwanpasha/gin-server:latest
+          image: rizwanpasha/gin-server:v1
           ports:
             - containerPort: 12345
